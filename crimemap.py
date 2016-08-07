@@ -1,8 +1,12 @@
-from dbhelper import DBHelper
-from flask import Flask
-from flask import render_template
-from flask import request
+import os
 
+from dbhelper import DBHelper
+
+from flask import Flask
+
+from flask import render_template
+
+from flask import request
 
 app = Flask(__name__)
 DB = DBHelper()
@@ -35,5 +39,6 @@ def clear():
         print e
     return home()
 
+
 if __name__ == '__main__':
-    app.run()
+	app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT',8080)))
