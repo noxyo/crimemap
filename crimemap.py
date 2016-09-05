@@ -8,6 +8,12 @@ from flask import render_template
 
 from flask import request
 
+
+
+
+
+
+
 app = Flask(__name__)
 DB = DBHelper()
 
@@ -38,7 +44,11 @@ def clear():
     except Exception as e:
         print e
     return home()
-
+    
+    
+    
+#@app.route("/submitcrime", methods=['POST'])
+#def submitcrime(): category = request.form.get("category") date = request.form.get("date") latitude = float(request.form.get("latitude")) longitude = float(request.form.get("longitude")) description = request.form.get("description") DB.add_crime(category, date, latitude, longitude, description) return home() 
 
 if __name__ == '__main__':
 	app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT',8080)))
