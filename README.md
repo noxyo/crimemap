@@ -16,6 +16,7 @@ This is the second example project from the book *"Flask By Example"*
 
 This project focuses on:
 
+
 * Adding a database (MySQL) to a Flask application
 * Using the Google Maps widget
 * Some basic JavaScript

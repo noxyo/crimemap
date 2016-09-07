@@ -1,9 +1,7 @@
 import os
 
 from flask import Flask
-
 from flask import render_template
-
 from flask import request
 
 import json
@@ -21,7 +19,6 @@ else:
 app = Flask(__name__)
 DB = DBHelper()
 
-
 categories = ['mugging', 'break-in', 'homicide', 'car-jacking']
 
 def sanitize_string(userinput):
@@ -33,8 +30,7 @@ def home(error_message=None):
     crimes = DB.get_all_crimes()
     crimes = json.dumps(crimes)
     return render_template("home.html", crimes=crimes, categories=categories, error_message=error_message)
-    
-    
+
 @app.route("/submitcrime", methods=['POST'])
 def submitcrime():
     category = request.form.get("category")
@@ -59,7 +55,6 @@ def format_date(userdate):
         return datetime.datetime.strftime(date, "%Y-%m-%d")
     except TypeError:
         return None
-    
 
 if __name__ == '__main__':
 	app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT',8080)))
